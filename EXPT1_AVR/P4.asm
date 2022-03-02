@@ -1,0 +1,15 @@
+.CSEG
+LDI ZL,LOW(NUM<<1)
+LDI ZH,HIGH(NUM<<1)
+LDI XL,0x60
+LDI XH,0x00
+
+LPM R0,Z+
+LPM R1,Z
+CP R0,R1
+brlt elseMax1
+max1: ST X,R0
+NOP
+elseMax1: ST X,R1
+NOP
+NUM: .db 0x31,0x4F
